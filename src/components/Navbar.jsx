@@ -27,25 +27,25 @@ export default function Navbar() {
                 
                 className={` ${open ? "w-72" : "hidden lg:block lg:w-20"
 
-                    } bg-dark-purple min-h-full  max-h-full p-5  absolute lg:relative duration-300`}
+                    } bg-dark-purple min-h-screen  max-h-full p-5  absolute lg:relative duration-300 `}
             >
-                <i className={`text-gray-200 fa-sharp fa-solid fa-arrow-left absolute cursor-pointer fa-lg m-3 -right-3 top-6 w-7 
+                <i className={`text-white fa-sharp fa-solid fa-arrow-left absolute cursor-pointer fa-lg m-3 -right-3 top-6 w-7 
              ${!open && "rotate-180 text-white rounded-full "} `}
              onClick={ () =>dispatch(setOpen())}></i>
 
-                    <Link to="/">
+                    
                 <div className="flex items-center">
                     <i className={`fa-solid fa-hospital fa-xl text-white cursor-pointer duration-500 px-2 ${open && "rotate-[360deg]"
                         }`}></i>
-
+<Link to="/">
                     <h1
                         className={`text-white origin-left font-medium text-xl duration-200 ${!open && "scale-0"
                             }`}
                     >
                         Hospital
                     </h1>
-                </div>
                     </Link>
+                </div>
 
 
 

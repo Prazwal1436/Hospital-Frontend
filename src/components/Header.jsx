@@ -9,9 +9,9 @@ export default function Header() {
 
 
   return (
-    <div className='sticky-top bg-dark-purple flex'>
+    <div className=' bg-dark-purple flex'>
          <i className={`text-none fa-sharp fa-solid fa-bars fa-xl mb-3 p-4 lg:hidden cursor-pointer 
-             ${!open && "rotate-180 text-white border-dark-purple border-2 rounded-full "} `}
+             ${!open && "rotate-180 text-white  "} `}
              onClick={ () =>dispatch(setOpen())}></i>
         <Link to="/"><h1 className="text-2xl font-semibold text-white m-2 p-2">Hospital</h1></Link>
     </div>
