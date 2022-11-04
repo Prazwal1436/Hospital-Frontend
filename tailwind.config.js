@@ -6,6 +6,7 @@ module.exports = {
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
+   
     extend: {
       colors: {
         "dark-purple": "#3F505F",

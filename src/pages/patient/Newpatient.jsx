@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 export default function Newpatient() {
+  const[patient,setPatient]=useState({
+    firstname:"",
+    middlename:"",
+    lastname:"",
+    sex:"",
+    dob:"",
+    pob:"",
+    occupation:"",
+    epatientid:"",
+    blood:"",
+    clinicsite:"",
+    refferedby:"",
+    reffereddate:"",
+    relegion:"",
+    guardian:"",
+    phone:"",
+    email:"",
+    address:""
+  })
+
+  const handleChange=(e)=>{
+    setPatient({...patient, [e.target.name]:e.target.value})
+}
+
   return (
     <div className=''>
       <div className='sticky-top justify-between bg-gray-500 flex'>
@@ -18,6 +42,8 @@ export default function Newpatient() {
               id="firstname"
               name="firstname"
               type="text"
+              value={patient.firstname}
+              onChange={handleChange}
 
               required
               className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
@@ -32,7 +58,8 @@ export default function Newpatient() {
               id="middlename"
               name="middlename"
               type="text"
-
+              value={patient.middlename}
+              onChange={handleChange}
               className="block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Middle Name"
             />
@@ -45,6 +72,8 @@ export default function Newpatient() {
               id="lastname"
               name="lastname"
               type="text"
+              value={patient.lastname}
+              onChange={handleChange}
               required
               className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Last Name"

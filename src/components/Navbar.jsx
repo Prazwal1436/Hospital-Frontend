@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { setOpen,setInventory,setPatient,setScheduling,setImaging,setMedication,setLabs,setBilling,setIncident,setAdmin } from './redux/navSlice';
@@ -29,10 +29,11 @@ export default function Navbar() {
 
                     } bg-dark-purple min-h-full  max-h-full p-5  absolute lg:relative duration-300`}
             >
-                <i className={`text-gray-200 fa-sharp fa-solid fa-arrow-left absolute cursor-pointer -right-3 top-6 w-7 
-             ${!open && "rotate-180 text-white border-dark-purple border-2 rounded-full "} `}
+                <i className={`text-gray-200 fa-sharp fa-solid fa-arrow-left absolute cursor-pointer fa-lg m-3 -right-3 top-6 w-7 
+             ${!open && "rotate-180 text-white rounded-full "} `}
              onClick={ () =>dispatch(setOpen())}></i>
 
+                    <Link to="/">
                 <div className="flex items-center">
                     <i className={`fa-solid fa-hospital fa-xl text-white cursor-pointer duration-500 px-2 ${open && "rotate-[360deg]"
                         }`}></i>
@@ -44,6 +45,7 @@ export default function Navbar() {
                         Hospital
                     </h1>
                 </div>
+                    </Link>
 
 
 

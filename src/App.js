@@ -12,11 +12,17 @@ import Admitted from "./pages/patient/Admitted";
 import Outpatient from "./pages/patient/Outpatient";
 import Newpatient from "./pages/patient/Newpatient";
 import Preports from "./pages/patient/Preports";
+import { useSelector} from 'react-redux'
+
+import Login from "./Login";
+
 const App = () => {
-  
+  const status = useSelector((state) => state.login.status)
   return (
-    <div className="relative lg:flex">
-      <Navbar/>
+   <div>
+      {!status?(<Login/>):(
+        <div className="relative lg:flex">
+        <Navbar/>
       <div className="h-full lg:h-full min-h-screen flex-1 ">
         <Header/>
         <Routes>
@@ -34,7 +40,8 @@ const App = () => {
           <Route path="/patientreport" element={<Preports/>}/>
 
         </Routes>
-      </div>
+      </div></div>)}
+      
     </div>
   );
 };
