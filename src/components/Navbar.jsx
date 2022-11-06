@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { setOpen,setInventory,setPatient,setScheduling,setImaging,setMedication,setLabs,setBilling,setIncident,setAdmin } from './redux/navSlice';
-
+import { logout } from "./redux/loginSlice";
 export default function Navbar() {
 
    
@@ -500,8 +500,8 @@ export default function Navbar() {
                         </li>
                     </ul>
                     <li
-                        className={`flex  rounded-md p-2 px-3 py-3 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-2 px-3`}>
-                        <i class="fa-solid fa-gear"></i>
+                        className={`flex  rounded-md p-2 px-3 py-3 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-2 px-3`}  onClick={() => dispatch(logout())}>
+                       <i class="fa-solid fa-right-from-bracket"></i>
 
                         <span className={`${!open && "hidden"} origin-left duration-200`}>
                             Logout
