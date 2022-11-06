@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
-import { blood,sex } from '../../components/constants/blood'
+import { bloodType,sex } from '../../components/constants/blood'
 import {Link} from "react-router-dom"
+import axios from 'axios'
+
 
 export default function Newpatient() {
   const[patient,setPatient]=useState({
-    firstname:"",
-    middlename:"",
-    lastname:"",
+    firstName:"",
+    middleName:"",
+    lastName:"",
     sex:"",
-    dob:"",
-    pob:"",
+    dateOfBirth:"",
+   placeOfBirth:"",
     occupation:"",
-    epatientid:"",
-    blood:"",
+    patientStatus:"",
+    bloodType:"",
     clinicsite:"",
     refferedby:"",
     reffereddate:"",
@@ -31,13 +33,55 @@ export default function Newpatient() {
 
 function handleSubmit(e) {
   e.preventDefault();
+  const {  firstName,
+  middleName,
+  lastName,
+  sex,
+  dateOfBirth,
+ placeOfBirth,
+  occupation,
+  patientStatus,
+  bloodType,
+  clinicsite,
+  refferedby,
+  reffereddate,
+  relegion,
+  guardian,
+  phone,
+  email,
+  address } = patient
+    let data = {firstName,
+      middleName,
+      lastName,
+      sex,
+      dateOfBirth,
+     placeOfBirth,
+      occupation,
+      patientStatus,
+      bloodType,
+      clinicsite,
+      refferedby,
+      reffereddate,
+      relegion,
+      guardian,
+      phone,
+      email,
+      address }
+    let url = `https://surubasnet4.pythonanywhere.com/patient/`
+    axios.post(url, data)
+      .then(res => {
+        
+      })
+      .catch(err => {
+       
+      })
 
   console.log(patient);
 }
 
-let blood_arr = Object.entries(blood);
-  let blood_mapping = blood_arr.map(el => {
-    return <option value={el[0]}>{el[1]}</option>
+let bloodType_arr = Object.entries(bloodType);
+  let bloodType_mapping = bloodType_arr.map(el => {
+    return <option value={el[1]}>{el[1]}</option>
   })
 
   let sex_arr = Object.entries(sex);
@@ -56,14 +100,14 @@ let blood_arr = Object.entries(blood);
           
           
           <div className='block m-2'>
-            <label htmlFor="firstname" className="">
+            <label htmlFor="firstName" className="">
               First name<span className='text-red-500'>*</span>
             </label>
             <input
-              id="firstname"
-              name="firstname"
+              id="firstName"
+              name="firstName"
               type="text"
-              value={patient.firstname}
+              value={patient.firstName}
               onChange={handleChange}
 
               required
@@ -72,28 +116,28 @@ let blood_arr = Object.entries(blood);
             />
           </div>
           <div className='block m-2'>
-            <label htmlFor="middlename" className="">
+            <label htmlFor="middleName" className="">
               Middle Name
             </label>
             <input
-              id="middlename"
-              name="middlename"
+              id="middleName"
+              name="middleName"
               type="text"
-              value={patient.middlename}
+              value={patient.middleName}
               onChange={handleChange}
               className="block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="Middle Name"
             />
           </div>
           <div className='block m-2'>
-            <label htmlFor="lastname" className="">
+            <label htmlFor="lastName" className="">
               Last Name<span className='text-red-500'>*</span>
             </label>
             <input
-              id="lastname"
-              name="lastname"
+              id="lastName"
+              name="lastName"
               type="text"
-              value={patient.lastname}
+              value={patient.lastName}
               onChange={handleChange}
               required
               className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
@@ -159,14 +203,14 @@ let blood_arr = Object.entries(blood);
             />
           </div>
           <div className='block m-2'>
-            <label htmlFor="epatientid" className="">
+            <label htmlFor="patientStatus" className="">
               External Patient Id
             </label>
             <input
-              id="epatientid"
-              name="epatientid"
+              id="patientStatus"
+              name="patientStatus"
               type="text"
-              value={patient.epatientid}
+              value={patient.patientStatus}
               onChange={handleChange}
               
               className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
@@ -174,17 +218,17 @@ let blood_arr = Object.entries(blood);
             />
           </div>
           <div className='block m-2'>
-            <label htmlFor="blood" className="">
-              Blood Group
+            <label htmlFor="bloodType" className="">
+              bloodType Group
             </label>
             <select
-              id="blood"
-              name="blood"
-              value={patient.blood}
+              id="bloodType"
+              name="bloodType"
+              value={patient.bloodType}
               onChange={handleChange}
               className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             >
-             {blood_mapping}
+             {bloodType_mapping}
             </select>
           </div>
           <div className='block m-2'>

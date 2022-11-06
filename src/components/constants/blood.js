@@ -1,4 +1,4 @@
-export const blood = {
+export const bloodType = {
     aposetive :"A+",
     anegative :"A-",
     abposetive :"AB+",
