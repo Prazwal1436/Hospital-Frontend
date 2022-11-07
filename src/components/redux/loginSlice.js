@@ -2,20 +2,17 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   status: false,
-  email:"",
-  name:""
-
 }
 
 export const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
-    login: (state) => {
+    login: (state,payload) => {
         state.status =  true
-        
       },
       logout: (state) => {
+        localStorage.setItem("access_token", "")
         state.status =  false
       },
   },

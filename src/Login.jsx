@@ -3,19 +3,16 @@ import Alert from './components/Alert'
 import hospimg from './images/hospital.png'
 import {  useDispatch } from 'react-redux'
 import { login } from "./components/redux/loginSlice";
+import axios from 'axios';
 
 export default function Login() {
   const dispatch=useDispatch();
   
-  const[user]=useState({
-    email:"admin@admin.com",
-    password:"admin@",
-    name:"MindRisers"
-  })
+  
 
-  const[data,setData]=useState({
-    email:"admin@admin.com",
-    password:"admin@",
+  const[dataa,setData]=useState({
+    email:"",
+    password:"",
   })
 
   const [alert, setAlert] = useState({
@@ -24,11 +21,13 @@ export default function Login() {
 });
 
   const handleChange=(e)=>{
-    setData({...data, [e.target.name]:e.target.value})
+    setData({...dataa, [e.target.name]:e.target.value})
 }
 
 function handleSubmit(e) {
   e.preventDefault();
+  const { email, password } = dataa
+  let data = { email, password}
   if(data.email===""||data.password===""){
       setAlert({
           status: "red-500",
@@ -36,15 +35,21 @@ function handleSubmit(e) {
       })
   }
   else{
-    if(data.email===user.email&& data.password===user.password){
-      dispatch(login())
-    }
-    else{
-      setAlert({
-        status: "red-500",
-        message: "Password Incorrect"
+    
+    axios.post("https://surubasnet4.pythonanywhere.com/login/", data)
+    .then(res => {
+      console.log(res);
+        localStorage.setItem("access_token", res.data.token)
+        dispatch(login(data))
     })
-    }
+    .catch(err => {
+        // console.log({err})
+        // console.log(err.response)
+        setAlert({
+            status: "red-500",
+            message: err
+        })
+    })
   }
   
 }
@@ -87,7 +92,7 @@ function handleSubmit(e) {
                     id="exampleFormControlInput2"
                     placeholder="Email address"
                     name='email'
-                    value={data.email}
+                    value={dataa.email}
                       onChange={handleChange}
                   />
                 </div>
@@ -100,7 +105,7 @@ function handleSubmit(e) {
                     id="exampleFormControlInput2"
                     placeholder="Password"
                     name='password'
-                    value={data.password}
+                    value={dataa.password}
                       onChange={handleChange}
                   />
                 </div>

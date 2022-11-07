@@ -10,14 +10,20 @@ import Welcome from "./pages/Welcome";
 import Listing from "./pages/patient/Listing";
 import Admitted from "./pages/patient/Admitted";
 import Outpatient from "./pages/patient/Outpatient";
+import EditPatient from "./pages/patient/EditPatient";
 import Newpatient from "./pages/patient/Newpatient";
 import Preports from "./pages/patient/Preports";
-import { useSelector} from 'react-redux'
-
+import { useSelector,useDispatch} from 'react-redux'
 import Login from "./Login";
+import { login } from "./components/redux/loginSlice";
+
 
 const App = () => {
+  const dispatch=useDispatch();
   const status = useSelector((state) => state.login.status)
+  if (localStorage.getItem("access_token")) {
+    dispatch(login())}
+  
   return (
    <div>
       {!status?(<Login/>):(
@@ -38,6 +44,7 @@ const App = () => {
           <Route path="/outpatient" element={<Outpatient/>}/>
           <Route path="/newpatient" element={<Newpatient/>}/>
           <Route path="/patientreport" element={<Preports/>}/>
+          <Route path="/editpatient" element={<EditPatient/>}/>
 
         </Routes>
       </div></div>)}

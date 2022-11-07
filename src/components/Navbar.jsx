@@ -52,7 +52,7 @@ export default function Navbar() {
 
                 <ul className="pt-7">
                     <form className="flex items-center ">
-                        <label for="simple-search" className="sr-only">Search</label>
+                        <label htmlFor="simple-search" className="sr-only">Search</label>
                         <div className={`${!open && "hidden"} origin-left duration-200 relative w-full`}>
                             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                 <i className="fa-solid fa-magnifying-glass text-gray-400"></i>
