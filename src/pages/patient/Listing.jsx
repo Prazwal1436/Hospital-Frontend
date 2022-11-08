@@ -46,7 +46,6 @@ export default function Listing() {
 
   }
   function editList(data) {
-    console.log(data);
     navigate("/editpatient")
     dispatch(patient(data))
 

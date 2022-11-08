@@ -27,7 +27,7 @@ export default function Navbar() {
                 
                 className={` ${open ? "w-72" : "hidden lg:block lg:w-20"
 
-                    } bg-dark-purple min-h-screen  max-h-full p-5  absolute lg:relative duration-300 `}
+                    } bg-dark-purple min-h-full  max-h-full p-5  absolute lg:relative duration-300 `}
             >
                 <i className={`text-white fa-sharp fa-solid fa-arrow-left absolute cursor-pointer fa-lg m-3 -right-3 top-6 w-7 
              ${!open && "rotate-180 text-white rounded-full "} `}

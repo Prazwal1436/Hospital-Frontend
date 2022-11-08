@@ -9,8 +9,8 @@ export const patientSlice = createSlice({
   name: 'patient',
   initialState,
   reducers: {
-    patient: (state,payload) => {
-        state.id =  payload.item.id
+    patient: (state,value) => {
+        state.id =  value.payload;
       },
 
   },
