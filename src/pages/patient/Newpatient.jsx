@@ -14,11 +14,11 @@ export default function Newpatient() {
     dateOfBirth: "",
     placeOfBirth: "",
     occupation: "",
-    patientStatus: "",
+    patientStatus: "Registered",
     bloodType: "A+",
     patientType: "",
     referBy: "",
-    refferedDate: "",
+    referredDate: "",
     religion: "",
     parent_guardian: "",
     phone: "",
@@ -47,7 +47,7 @@ export default function Newpatient() {
       bloodType,
       patientType,
       referBy,
-      refferedDate,
+      referredDate,
       religion,
       parent_guardian,
       phone,
@@ -66,7 +66,7 @@ export default function Newpatient() {
       bloodType,
       patientType,
       referBy,
-      refferedDate,
+      referredDate,
       religion,
       parent_guardian,
       phone,
@@ -105,7 +105,7 @@ export default function Newpatient() {
 
   return (
     <div className=''>
-      <div className='sticky-top justify-between bg-gray-500 flex'>
+      <div className=' justify-between bg-gray-500 flex'>
         <h1 className="text-xl font-semibold text-white p-3">New Patient</h1>
 
       </div>
@@ -216,21 +216,7 @@ export default function Newpatient() {
               placeholder="Occupation"
             />
           </div>
-          <div className='block m-2'>
-            <label htmlFor="patientStatus" className="">
-              External Patient Id
-            </label>
-            <input
-              id="patientStatus"
-              name="patientStatus"
-              type="text"
-              value={patient.patientStatus}
-              onChange={handleChange}
-
-              className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              placeholder="External Patient Id"
-            />
-          </div>
+        
           <div className='block m-2'>
             <label htmlFor="bloodType" className="">
               bloodType Group
@@ -246,28 +232,28 @@ export default function Newpatient() {
             </select>
           </div>
           <div className='block m-2'>
-            <label htmlFor="cliniccite" className="">
-              Clinic Site
+            <label htmlFor="patientType" className="">
+              Patient Type
             </label>
             <input
-              id="cliniccite"
-              name="cliniccite"
+              id="patientType"
+              name="patientType"
               type="text"
 
               value={patient.patientType}
               onChange={handleChange}
 
               className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              placeholder="Clininc Site"
+              placeholder="Patient Type"
             />
           </div>
           <div className='block m-2'>
-            <label htmlFor="referedby" className="">
+            <label htmlFor="referBy" className="">
               Reffered By
             </label>
             <input
-              id="referedby"
-              name="referedby"
+              id="referBy"
+              name="referBy"
               type="text"
               value={patient.referBy}
               onChange={handleChange}
@@ -277,18 +263,18 @@ export default function Newpatient() {
             />
           </div>
           <div className='block m-2'>
-            <label htmlFor="refferedDate" className="">
+            <label htmlFor="referredDate" className="">
               Referred Date
             </label>
             <input
-              id="refferedDate"
-              name="refferedDate"
-              type="text"
-              value={patient.refferedDate}
+              id="referredDate"
+              name="referredDate"
+              type="date"
+              value={patient.referredDate}
               onChange={handleChange}
 
               className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              placeholder="Referred Date"
+              
             /></div>
           <div className='block m-2'>
             <label htmlFor="religion" className="">
@@ -307,11 +293,11 @@ export default function Newpatient() {
           </div>
           <div className='block m-2'>
             <label htmlFor="guardain" className="">
-              parent_guardian
+              Guardain
             </label>
             <input
-              id="guardain"
-              name="guardain"
+              id="parent_guardian"
+              name="parent_guardian"
               type="text"
               value={patient.parent_guardian}
               onChange={handleChange}

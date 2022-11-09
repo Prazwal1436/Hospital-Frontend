@@ -9,8 +9,8 @@ export const bloodType = {
     onegative :"O-",
 }
 export const sex = {
-    Male :"male",
-    Female:"female",
-    Others:"others"
+    Male :"Male",
+    Female:"Female",
+    Others:"Others"
 
 }
