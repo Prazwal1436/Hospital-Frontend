@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { bloodType, sex } from '../../components/constants/blood'
 import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios'
@@ -26,7 +26,22 @@ export default function Newpatient() {
     address: ""
   })
 
+  const [list, setList] = useState([]);
+  useEffect(() => {
 
+    axios.get(' https://surubasnet4.pythonanywhere.com/referBy/', {
+      headers: {
+        'Authorization': `token ${localStorage.getItem("access_token")}`
+      }
+    })
+      .then((res) => {
+        setList(res.data)
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  },[])
 
   const handleChange = (e) => {
     console.log({ e })
@@ -248,19 +263,31 @@ export default function Newpatient() {
             />
           </div>
           <div className='block m-2'>
+            <label htmlFor="sex" className="">
+              Sex
+            </label>
+            <select
+              id="sex"
+              name="sex"
+              value={patient.sex}
+              onChange={handleChange}
+              className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            >
+              {sex_mapping}
+            </select>
+          </div>
+          <div className='block m-2'>
             <label htmlFor="referBy" className="">
               Reffered By
             </label>
-            <input
+            <select
               id="referBy"
               name="referBy"
-              type="text"
               value={patient.referBy}
               onChange={handleChange}
-
               className=" block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              placeholder="Reffered By"
-            />
+            ><option value="">Choose Referances</option> 
+             {list.map(item => <option value={item.id}>{item.doctor_name}</option>)}</select>
           </div>
           <div className='block m-2'>
             <label htmlFor="referredDate" className="">

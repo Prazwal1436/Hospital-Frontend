@@ -4,7 +4,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 
 
-import { Link, useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 
 export default function Listing() {
@@ -63,22 +63,22 @@ export default function Listing() {
         </form>
       </div>
 
-      <table className=" lg:w-full  border-collapse mt-4 ">
-        <thead className='bg-gray-400 py-2'>
+      <table className=" w-full  border-collapse">
+        <thead className='bg-gray-400'>
           <tr>
-            <th className='border lg:border-none border-slate-300 lg:w-10'>Id</th>
-            <th className='border lg:border-none border-slate-300 '>First Name</th>
-            <th className='border lg:border-none border-slate-300 hidden lg:block'>Middle Name</th>
-            <th className='border lg:border-none border-slate-300 '>Last Name</th>
-            <th className='border lg:border-none border-slate-300 lg:w-15'>Sex</th>
-            <th className='border lg:border-none border-slate-300 lg:w-15 hidden lg:block'>DOB</th>
-            <th className='border lg:border-none border-slate-300 '>Status</th>
-            <th className='border lg:border-none border-slate-300 w-50'>Actions</th>
+            <th className='border py-2 lg:border-none border-slate-300 lg:w-10'>Id</th>
+            <th className='border py-2 lg:border-none border-slate-300 '>First Name</th>
+            <th className='border py-2 lg:border-none border-slate-300 hidden lg:block'>Middle Name</th>
+            <th className='border py-2 lg:border-none border-slate-300 '>Last Name</th>
+            <th className='border py-2 lg:border-none border-slate-300 lg:w-15'>Sex</th>
+            <th className='border py-2 lg:border-none border-slate-300 lg:w-15 hidden lg:block'>DOB</th>
+            <th className='border py-2 lg:border-none border-slate-300 '>Status</th>
+            <th className='border py-2 lg:border-none border-slate-300 w-50'>Actions</th>
           </tr>
         </thead>
         <tbody>
           {list.map(item =>
-            <tr className='hover:bg-gray-400 hover:text-white'>
+            <tr className='hover:bg-gray-300 hover:text-white'>
 
               <td className='px-0.5 lg:px-2 text-center '>{item.id}</td>
               <td className='px-0.5 lg:px-2 text-center'>{item.firstName}</td>
@@ -89,8 +89,8 @@ export default function Listing() {
               <td className='px-0.5 lg:px-2 text-center'>{item.patientStatus}</td>
               <td className='lg:px-1 lg:text-center'>
                 <Link type='button' to={`/editpatient/${item.id}`} className=' p-1.5 mx-1 lg:mx-3 lg:px-3 hover:text-yellow-700 text-yellow-500 ' ><i className="fa-solid fa-pencil"></i></Link>
-                <Link type='button' to={`/editpatient/${item.id}`} className=' p-1.5 mx-1 lg:mx-3 lg:px-3 hover:text-green-700 text-green-500 ' ><i className="fa-solid fa-check" ></i></Link>
                 <button type="button" className=' p-1.5 mx-1 lg:mx-3 lg:px-3 hover:text-red-700 text-red-500 '><i className="fa-solid fa-trash" onClick={(e) => { e.preventDefault(); deleteList(item.id) }}></i></button>
+                <Link type='button' to={`/editpatient/${item.id}`} className=' p-1.5 mx-1 lg:mx-3 lg:px-3 hover:text-green-700 text-green-500 ' ><i className="fa-solid fa-check" ></i></Link>
               </td>
             </tr>)}
         </tbody>
